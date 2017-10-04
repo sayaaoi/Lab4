@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
  * The following code needs a lot of TLC. So give it some!
  *
@@ -7,20 +9,51 @@
  * 4. Add comments and Javadoc comments where needed
  * 5. Remove unnecessary comments as appropriate
  */
+/**
+ * find the longest of overlapping substrings in a and b.
+ */
+public class ReclamationProject {
+    /**
+     * find the longest of overlapping substrings in two string inputs.
+     * @param args given strings from user.
+     */
+    public static void main(final String[] args) {
+        String inputPrompt = String.format("Enter two strings:");
+        Scanner lineScanner = new Scanner(System.in);
+    }
+    /**
+     * Find the longest of overlapping substrings in two string inputs.
+     * @param a given strings from user.
+     * @param b given strings from user.
+     * @return the longest of overlapping substrings in two string inputs.
+     */
+    public static String doit(final String a, final String b) {
+        String copya = a;
+        String copyb = b;
+        if (a.length() > b.length()) {
+            String c = copya; // set c to a
+            copya = copyb; copyb = c;
+            }
+        //String r = (a.equals(b)) ? a : ""; // I love the ternary operator!
+        String r = copya;
+        if (copya.equals(copyb)) {
+            r = copya;
+        } else {
+            r = copyb;
+        }
 
-public class ReclamationProject
-{
-    static String doit(String a,String b){
-        if (a.length() > b.length()){
-            String c = a; // TODO: set c to a
-            a=b; b=c;}
-        String r = (a.equals(b)) ? "" : ""; // I love the ternary operator!
         /*
          * For loop with i
          */
-        for (int i = 0; i < a.length(); i++) { for (int j = a.length() - i; j > 0; j--) {
-                for (int k = 0; k < b.length()- j; k++) {
-                    r = (a.regionMatches(i, b, k, j) && j >r.length()) ? a.substring(i,i + j) : r; // Do it!
-                        }} // Ah yeah
+        for (int i = 0; i < copya.length(); i++) {
+            for (int j = copya.length() - i; j > 0; j--) {
+                for (int k = 0; k < copyb.length() - j; k++) {
+                    // r = (a.regionMatches(i, b, k, j) && j > r.length()) ?
+                    //a.substring(i,i + j) : r; // Do it!
+                    if (copya.regionMatches(i, copyb, k, j) && j > r.length()) {
+                        r = copya.substring(i, i + j);
+                    }
+                        }
+                } // Ah yeah
         } return r; }
 }
