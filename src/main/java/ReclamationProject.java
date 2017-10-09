@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 /*
  * The following code needs a lot of TLC. So give it some!
@@ -18,8 +17,9 @@ public class ReclamationProject {
      * @param args given strings from user.
      */
     public static void main(final String[] args) {
-        String inputPrompt = String.format("Enter two strings:");
-        Scanner lineScanner = new Scanner(System.in);
+        String input1 = "Best university";
+        String input2 = "UIUC is the best university.";
+        System.out.println(doit(input1, input2));
     }
     /**
      * Find the longest of overlapping substrings in two string inputs.
@@ -33,18 +33,12 @@ public class ReclamationProject {
         if (a.length() > b.length()) {
             String c = copya; // set c to a
             copya = copyb; copyb = c;
-            }
-        //String r = (a.equals(b)) ? a : ""; // I love the ternary operator!
-        String r = copya;
-        if (copya.equals(copyb)) {
-            r = copya;
-        } else {
-            r = copyb;
         }
 
         /*
          * For loop with i
          */
+        String r = "";
         for (int i = 0; i < copya.length(); i++) {
             for (int j = copya.length() - i; j > 0; j--) {
                 for (int k = 0; k < copyb.length() - j; k++) {
@@ -53,7 +47,9 @@ public class ReclamationProject {
                     if (copya.regionMatches(i, copyb, k, j) && j > r.length()) {
                         r = copya.substring(i, i + j);
                     }
-                        }
-                } // Ah yeah
-        } return r; }
+                }
+            } // Ah yeah
+        }
+        return r;
+        }
 }
